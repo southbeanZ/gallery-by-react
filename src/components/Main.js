@@ -70,11 +70,10 @@ class ImgFigure extends React.Component {
 				<img src={this.props.data.imageURL} alt={this.props.data.fileName}/>
 				<figcaption>
 					<h2 className="img-title">{this.props.data.title}</h2>
-					<div className="img-back" onClick={this.handleClick}>
-						<p>{this.props.data.desc}</p>
-					</div>
 				</figcaption>
-				
+				<div className="img-back" onClick={this.handleClick}>
+					<p>{this.props.data.desc}</p>
+				</div>
 			</figure>
 		);
 	}
