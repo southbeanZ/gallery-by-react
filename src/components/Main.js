@@ -79,6 +79,19 @@ class ImgFigure extends React.Component {
 	}
 }
 
+// 控制条组件
+class ControllerUnit extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<span className="controller-unit"></span>
+		);
+	}
+}
+
 class AppComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -273,6 +286,7 @@ class AppComponent extends React.Component {
   		}
 
   		imgFigures.push(<ImgFigure data={value} ref={'imgFgure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
+  		controllerUnits.push(<ControllerUnit />)
   	}.bind(this));
 
     return (
