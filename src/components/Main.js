@@ -83,11 +83,33 @@ class ImgFigure extends React.Component {
 class ControllerUnit extends React.Component {
 	constructor(props) {
 		super(props);
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	handleClick(e) {
+		if(this.props.arrange.isCenter) {
+			this.props.inverse();
+		} else {
+			this.props.center();
+		}
+
+		e.stopPropagation();
+		e.preventDefault();
 	}
 
 	render() {
+		var controllerUnitClassName = 'controller-unit';
+
+		if(this.props.arrange.isCenter) {
+			controllerUnitClassName += ' is-center';
+
+			if(this.props.arrange.isInverse) {
+				controllerUnitClassName += ' is-inverse';
+			}
+		}
+
 		return (
-			<span className="controller-unit"></span>
+			<span className={controllerUnitClassName} onClick={this.handleClick}></span>
 		);
 	}
 }
@@ -285,8 +307,8 @@ class AppComponent extends React.Component {
   			};
   		}
 
-  		imgFigures.push(<ImgFigure data={value} ref={'imgFgure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
-  		controllerUnits.push(<ControllerUnit />)
+  		imgFigures.push(<ImgFigure key={index} data={value} ref={'imgFgure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
+  		controllerUnits.push(<ControllerUnit key={index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>)
   	}.bind(this));
 
     return (
